@@ -1,5 +1,68 @@
 /*
 
+Here's the official solution in case you want to compare notes:
+
+────────────────────────────────────────────────────────────────────────────────
+solution.js:
+
+    var express = require('express');
+    var app = express();
+
+    app.set('port', (process.argv[2] || 3000));
+    app.set('view engine', 'jsx');
+    app.set('views', __dirname + '/views');
+    app.engine('jsx', require('express-react-views').createEngine({transformViews: false}));
+
+    require('babel/register')({
+        ignore: false
+    });
+
+    app.use('/', function (req, res) {
+        res.render('index', '');
+    });
+
+    app.listen(app.get('port'), function () {
+    });
+
+────────────────────────────────────────────────────────────────────────────────
+index.jsx:
+
+    import React from 'react';
+
+    export default class TodoBox extends React.Component {
+        render() {
+            return (
+                <div className="todoBox">
+                    <h1>Todos</h1>
+                    <TodoList />
+                    <TodoForm />
+                </div>
+            );
+        }
+    }
+
+    class TodoList extends React.Component {
+        render() {
+            return (
+                <div className="todoList">
+                    I am a TodoList.
+                </div>
+            );
+        }
+    }
+
+    class TodoForm extends React.Component {
+        render() {
+            return (
+                <div className="todoForm">
+                    I am a TodoForm.
+                </div>
+            );
+        }
+    }
+
+
+
 COMPONENTS
  Exercise 2 of 11
 
@@ -39,10 +102,16 @@ Update index.jsx as shown below.
 
     class TodoList extends React.Component {
       // Write code here
+      <div class="todoList">
+        I am a TodoList.
+      </div>
     }
 
     class TodoForm extends React.Component {
       // Write code here
+      <div class="todoForm">
+        I am a TodoForm.
+      </div>
     }
 
 Implement the missing code above using JSX notation to output the HTML below.
@@ -57,7 +126,8 @@ Don't forget render and return! :-)
       I am a TodoForm.
     </div>
 
-JSX Docs: [https://facebook.github.io/react/docs/getting-started.html](https://facebook.github.io/react/docs/getting-started.html)
+JSX Docs: [https://facebook.github.io/react/docs/getting-started.html]
+(https://facebook.github.io/react/docs/getting-started.html)
 
 When you are ready run node program.js and access http://localhost:3000 to
 see the HTML output in the browser.
