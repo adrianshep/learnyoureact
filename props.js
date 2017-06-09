@@ -1,5 +1,83 @@
 /*
 
+Here's the official solution in case you want to compare notes:
+
+────────────────────────────────────────────────────────────────────────────────
+solution.js:
+
+    var express = require('express');
+    var app = express();
+
+    app.set('port', (process.argv[2] || 3000));
+    app.set('view engine', 'jsx');
+    app.set('views', __dirname + '/views');
+    app.engine('jsx', require('express-react-views').createEngine({transformViews: false}));
+
+    require('babel/register')({
+        ignore: false
+    });
+
+    app.use('/', function (req, res) {
+        res.render('index', '');
+    });
+
+    app.listen(app.get('port'), function () {
+    });
+
+────────────────────────────────────────────────────────────────────────────────
+index.jsx:
+
+    import React from 'react';
+
+    export default class TodoBox extends React.Component {
+        render() {
+            return (
+                <div className="todoBox">
+                    <h1>Todos</h1>
+                    <TodoList />
+                    <TodoForm />
+                </div>
+            );
+        }
+    }
+
+    class TodoList extends React.Component {
+        render() {
+            return (
+                <div className="todoList">
+                    <table style={{border: "2px solid black"}}>
+                        <tbody>
+                        <Todo title="Shopping">Milk</Todo>
+                        <Todo title="Hair cut">13:00</Todo>
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+    }
+
+    class Todo extends React.Component {
+        render() {
+            return (
+                <tr>
+                    <td style={{border: "1px solid black"}}>{this.props.title}</td>
+                    <td style={{border: "1px solid black"}}>{this.props.children}</td>
+                </tr>
+            );
+        }
+    }
+
+    class TodoForm extends React.Component {
+        render() {
+            return (
+                <div className="todoForm">
+                    I am a TodoForm.
+                </div>
+            );
+        }
+    }
+
+
 PROPS
  Exercise 3 of 11
 
