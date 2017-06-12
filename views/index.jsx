@@ -1,7 +1,15 @@
 import React from 'react';
 
 export default class TodoBox extends React.Component {
-  // Omitted
+    render() {
+        return (
+            <div className="todoBox">
+                <h1>Todos</h1>
+                <TodoList />
+                <TodoForm />
+            </div>
+        );
+    }
 }
 
 class TodoList extends React.Component {
@@ -12,7 +20,7 @@ class TodoList extends React.Component {
                   <tbody>
                     <Todo title="Shopping">Milk</Todo>
                     <Todo title="Hair cut">13:00</Todo>
-                    <Todo>15:00</Todo>
+                    <Todo title="Learn React">15:00</Todo>
                   </tbody>
                 </table>
             </div>
@@ -35,5 +43,11 @@ Todo.propTypes = {
 };
 
 class TodoForm extends React.Component {
-  // Omitted
+    render() {
+        return (
+            <div className="todoForm">
+                I am a TodoForm.
+            </div>
+        );
+    }
 }
