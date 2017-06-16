@@ -67,6 +67,17 @@ Component API: [https://facebook.github.io/react/docs/component-api.html]
 Component Specs and Lifecycle: [https://facebook.github.io/react/docs/component-specs.html]
 (https://facebook.github.io/react/docs/component-specs.html)
 
+class Clock extends React.Component {
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+  }
+}
+
 After fixing your code, test it locally by running node program.js and
 visiting http://localhost:3000 in your browser.
 
