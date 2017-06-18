@@ -67,16 +67,21 @@ Component API: [https://facebook.github.io/react/docs/component-api.html]
 Component Specs and Lifecycle: [https://facebook.github.io/react/docs/component-specs.html]
 (https://facebook.github.io/react/docs/component-specs.html)
 
-class Clock extends React.Component {
-  render() {
-    return (
-      <div>
-        <h1>Hello, world!</h1>
-        <h2>It is {this.state.date.toLocaleTimeString()}.</h2>
-      </div>
-    );
+var Example = React.createClass({
+  getInitialState: function () {
+    return { mood: 'decent' };
+  },
+
+  render: function () {
+    return <div></div>;
   }
-}
+});
+
+<Example />
+
+getInitialState should return an object, like in the example above.
+
+Look at the bottom of the above code. <Example /> has a state of { mood: 'decent' }.
 
 After fixing your code, test it locally by running node program.js and
 visiting http://localhost:3000 in your browser.
