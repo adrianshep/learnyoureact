@@ -67,6 +67,14 @@ Component API: [https://facebook.github.io/react/docs/component-api.html]
 Component Specs and Lifecycle: [https://facebook.github.io/react/docs/component-specs.html]
 (https://facebook.github.io/react/docs/component-specs.html)
 
+From codecademy:
+
+A React component can access dynamic information in two ways: props and state.
+
+Unlike props, a component's state is not passed in from the outside. A component decides its own state.
+
+To make a component have state, write a getInitialState function:
+
 var Example = React.createClass({
   getInitialState: function () {
     return { mood: 'decent' };
@@ -82,6 +90,26 @@ var Example = React.createClass({
 getInitialState should return an object, like in the example above.
 
 Look at the bottom of the above code. <Example /> has a state of { mood: 'decent' }.
+
+To read a component's state, use the expression this.state.name-of-property:
+
+var TodayImFeeling = React.createClass({
+  getInitialState: function () {
+    return { mood: 'decent' };
+  },
+
+  render: function(){
+    return (
+      <h1>
+        I'm feeling {this.state.mood}!
+      </h1>
+    );
+  }
+});
+
+The above component class reads a property in its state from inside of its render function.
+
+Just like this.props, you can use this.state from any property on the instructions object.
 
 After fixing your code, test it locally by running node program.js and
 visiting http://localhost:3000 in your browser.
