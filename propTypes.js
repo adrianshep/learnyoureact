@@ -169,11 +169,22 @@ You can see that React.js prints a Warning in the console.
 Read the warning and modify the propTypes property of Todo to fix it.
 Also, add the title Learn React to the last Todo.
 
-Reusable Components: [https://facebook.github.io/react/docs/reusable-components.html](https://facebook.github.io/react/docs/reusable-components.html)
+Reusable Components: [https://facebook.github.io/react/docs/reusable-components.html]
+(https://facebook.github.io/react/docs/reusable-components.html)
 
 After fixing your code, test it locally by running node program.js and
 visiting http://localhost:3000 in your browser.
 
 Once you're confident, run learnyoureact verify program.js.
+
+From codecademy:
+
+If a component class expects a prop, then you can give that component class a
+propType!
+
+The first step to making a propType is to search for a property named propTypes
+on the instructions object. If there isn't one, make one! Put it at the top of
+the instructions object, so that it'll be easy to spot if you end up searching
+for it again.
 
 */
