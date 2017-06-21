@@ -71,7 +71,8 @@ From codecademy:
 
 A React component can access dynamic information in two ways: props and state.
 
-Unlike props, a component's state is not passed in from the outside. A component decides its own state.
+Unlike props, a component's state is not passed in from the outside. A component
+decides its own state.
 
 To make a component have state, write a getInitialState function:
 
