@@ -3,6 +3,110 @@
 
 /*
 
+Here's the official solution in case you want to compare notes:
+
+────────────────────────────────────────────────────────────────────────────────
+solution.js:
+
+    var express = require('express');
+    var app = express();
+
+    app.set('port', (process.argv[2] || 3000));
+    app.set('view engine', 'jsx');
+    app.set('views', __dirname + '/views');
+    app.engine('jsx', require('express-react-views').createEngine({transformViews: false}));
+
+    require('babel/register')({
+        ignore: false
+    });
+
+    var data = [
+        {title: 'Shopping', detail: process.argv[3]},
+        {title: 'Hair cut', detail: process.argv[4]}
+    ];
+
+    app.use('/', function (req, res) {
+        res.render('index', {data: data});
+    });
+
+    app.listen(app.get('port'), function () {
+    });
+
+────────────────────────────────────────────────────────────────────────────────
+index.jsx:
+
+    import React from 'react';
+
+    export default class TodoBox extends React.Component {
+        render() {
+            return (
+                <div className="todoBox">
+                    <h1>Todos</h1>
+                    <TodoList data={this.props.data}/>
+                    <TodoForm />
+                </div>
+            );
+        }
+    }
+
+    class TodoList extends React.Component {
+        render() {
+            let todo = this.props.data.map(function (obj) {
+                return <Todo title={obj.title} key={obj.title}>{obj.detail}</Todo>
+            });
+            return (
+                <div className="todoList">
+                    <table style={{border: "2px solid black"}}>
+                        <tbody>
+                        {todo}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
+    }
+
+    class Todo extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = {checked: false};
+        }
+
+        handleChange(e) {
+            this.setState({checked: e.target.checked});
+        }
+
+        render() {
+            return (
+                <tr>
+                    <td style={style.tableContent}><input type="checkbox" checked={this.state.checked}
+                                                          onChange={this.handleChange}/></td>
+                    <td style={style.tableContent}>{this.props.title}</td>
+                    <td style={style.tableContent}>{this.props.children}</td>
+                </tr>
+            );
+        }
+    }
+    Todo.propTypes = {
+        title: React.PropTypes.string.isRequired
+    };
+
+    class TodoForm extends React.Component {
+        render() {
+            return (
+                <div className="todoForm">
+                    I am a TodoForm.
+                </div>
+            );
+        }
+    }
+
+    let style = {
+        tableContent: {
+            border: "1px solid black"
+        }
+    };
+
 PROPS_FROM_SERVER
  Exercise 7 of 11
 
