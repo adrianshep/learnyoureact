@@ -1,48 +1,28 @@
-var express = require('express');
-var app = express();
 
-app.set('port', (process.argv[2] || 3000));
-app.set('view engine', 'jsx');
-app.set('views', __dirname + '/views');
-app.engine('jsx', require('express-react-views').createEngine({ transformViews: false }));
-
-require('babel/register')({
-    ignore: false
-});
-
-// write below
-var data = [
-  {title: 'Shopping', detail: process.argv[3]},
-  {title: 'Hair cut', detail: process.argv[4]}
-];
-
-app.use('/', function(req, res) {
-  res.render('index', {data: data});
-});
-
-app.listen(app.get('port'), function() {});
 
 /*
 
-var express = require('express');
-var app = express();
+Next, let's fix program.js.
+You can also make a new program.js file and write all the code there.
 
-app.set('port', (process.argv[2] || 3000));
-app.set('view engine', 'jsx');
-app.set('views', __dirname + '/views');
-app.engine('jsx', require('express-react-views').createEngine({ transformViews: false }));
+First of all, let's add these require statements - like this:
 
-require('babel/register')({
-    ignore: false
-});
+    var React = require('react');
+    var ReactDOMServer = require('react-dom/server');
+    var DOM = React.DOM;
+    var body = DOM.body;
+    var div = DOM.div;
+    var script = DOM.script;
 
-// write below
-var data = [];
+    var browserify = require('browserify');
+    var babelify = require("babelify");
 
-app.use('/', function(req, res) {
-  res.render('index', {data: data});
-});
+Next, add a line that reads index.jsx under the sentence that require s babel/register.
 
-app.listen(app.get('port'), function() {});
+    require('babel/register')({
+        ignore: false
+    });
+
+    var TodoBox = require('./views/index.jsx');
 
 */
