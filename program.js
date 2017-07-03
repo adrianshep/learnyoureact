@@ -7,6 +7,11 @@ var script = DOM.script;
 
 var browserify = require('browserify');
 var babelify = require("babelify");
+require('babel/register')({
+    ignore: false
+});
+
+var TodoBox = require('./views/index.jsx');
 
 /*
 
