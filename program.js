@@ -35,7 +35,7 @@ app.use('/bundle.js', function (req, res) {
             presets: ["react", "es2015"],
             compact: false
         }))
-        .require("css2/solution/app.js", {entry: true})
+        .require("prop_and_state/solution/app.js", {entry: true})
         .bundle()
         .pipe(res);
 });
